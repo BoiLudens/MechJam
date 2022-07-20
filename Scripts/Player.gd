@@ -1,6 +1,7 @@
 extends KinematicBody
 
 export (PackedScene) var bullet_scene
+export (PackedScene) var crosshair_scene
 
 onready var camera = $ClippedCamera
 onready var bullet_left_spawn = $"Armature/Skeleton/BoneAttachment3/Left Gun/Bullet Spawn"
@@ -23,6 +24,8 @@ func _physics_process(delta):
 	var intersection = space_state.intersect_ray(rayOrigin, rayEnd, [rid], 3)
 	if not intersection.empty():
 		var target = intersection.position
+		var crosshair = crosshair_scene.instance()
+		intersection.collider.add_child(crosshair)
 		if Input.is_action_pressed("fire") and bullet_can_spawn:
 			var bullet = bullet_scene.instance()
 			bullet_spawn_location(bullet, target)

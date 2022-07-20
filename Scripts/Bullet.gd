@@ -14,8 +14,8 @@ func instantiate(start, target):
 
 func _on_Bullet_body_entered(body):
 	var hit_particles = hit_particles_scene.instance()
+	body.queue_free()
 	add_child(hit_particles)
-
 	hit_particles.transform = transform
 	
 
