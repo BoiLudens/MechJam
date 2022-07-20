@@ -13,7 +13,6 @@ var left = true
 var bullet_can_spawn = true
 
 func _physics_process(delta):
-
 	var rid = $".".get_rid()
 	var space_state = get_world().direct_space_state
 	var mouse_position = get_viewport().get_mouse_position()
@@ -28,22 +27,14 @@ func _physics_process(delta):
 		intersection.collider.add_child(crosshair)
 		if Input.is_action_pressed("fire") and bullet_can_spawn:
 			var bullet = bullet_scene.instance()
-			bullet_spawn_location(bullet, target)
-			
-			
-			
-func bullet_spawn_location(bullet, target):
-	if left == true:
-		bullet_left_spawn.add_child(bullet)
-		bullet.instantiate(bullet_left_spawn.global_transform, target)
-		left = false
-		bullet_can_spawn = false
-	else:
-		bullet_right_spawn.add_child(bullet)
-		bullet.instantiate(bullet_right_spawn.global_transform, target)
-		left = true
-		bullet_can_spawn = false
+			var spawn_location = bullet_right_spawn if left else bullet_left_spawn
+			bullet_spawn_location(spawn_location, bullet, target)
 
+func bullet_spawn_location(spawn_location, bullet, target):
+	bullet_left_spawn.add_child(bullet)
+	bullet.instantiate(spawn_location.global_transform, target)
+	left = not left
+	bullet_can_spawn = false
 
 func _on_Bullet_Timer_timeout():
 	bullet_can_spawn = true
