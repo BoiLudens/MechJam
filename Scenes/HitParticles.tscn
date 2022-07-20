@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/HitParticles.gd" type="Script" id=1]
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 9.95
+color = Color( 0.235294, 0.537255, 0.866667, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+vertex_color_use_as_albedo = true
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color( 0.105882, 0.6, 0.690196, 1 )
+emission_energy = 1.91
+emission_operator = 0
+emission_on_uv2 = false
+depth_enabled = true
+depth_scale = 0.05
+depth_deep_parallax = false
+depth_flip_tangent = false
+depth_flip_binormal = false
+
+[sub_resource type="SphereMesh" id=6]
+material = SubResource( 5 )
+
+[node name="Particles" type="Particles"]
+explosiveness = 1.0
+process_material = SubResource( 4 )
+draw_pass_1 = SubResource( 6 )
+script = ExtResource( 1 )
