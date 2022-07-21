@@ -4,6 +4,11 @@ export (PackedScene) var bullet_scene
 export (PackedScene) var crosshair_scene
 export (PackedScene) var secondary_crosshair_scene
 
+var cursor_default = load("res://Textures/cursor2.png")
+var cursor_hit = load("res://Textures/cursor.png")
+var cursor_target = load("res://Textures/cursor3.png")
+
+
 onready var camera = $ClippedCamera
 onready var bullet_left_spawn = $"Armature/Skeleton/BoneAttachment3/Left Gun/Bullet Spawn"
 onready var bullet_right_spawn = $"Armature/Skeleton/BoneAttachment/Right Gun/Bullet Spawn"
@@ -26,12 +31,18 @@ func _physics_process(delta):
 	var intersection = space_state.intersect_ray(rayOrigin, rayEnd, [rid], 3)
 	if not intersection.empty():
 		var target_position = intersection.position
+		Input.set_custom_mouse_cursor(cursor_target)
 		if !check_for_crosshair(intersection.collider):
 			var crosshair = crosshair_scene.instance()
 			intersection.collider.add_child(crosshair)
+		if Input.is_action_pressed("fire"):
+			Input.set_custom_mouse_cursor(cursor_hit)
 		if Input.is_action_pressed("fire") and bullet_can_spawn:
+			
 			var spawn_location = bullet_right_spawn if left else bullet_left_spawn
 			bullet_spawn_location(spawn_location, target_position)
+	else:
+		Input.set_custom_mouse_cursor(cursor_default)
 	if Input.is_action_pressed("secondary"):
 		check_for_secondary_crosshair()
 		if Input.is_action_pressed("fire") and secondary_can_spawn:
