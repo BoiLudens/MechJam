@@ -13,12 +13,11 @@ func instantiate(start, target):
 	look_at(target, Vector3.UP)
 
 func _on_Bullet_body_entered(body):
-	var hit_particles = hit_particles_scene.instance()
-	body.queue_free()
-	add_child(hit_particles)
-	hit_particles.transform = transform
+	if body.is_in_group('mobs'):
+		var hit_particles = hit_particles_scene.instance()
+		body.queue_free()
+		add_child(hit_particles)
+		hit_particles.transform = transform
 	
-
-
 func _on_Timer_timeout():
 	queue_free()
