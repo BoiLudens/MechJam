@@ -16,19 +16,13 @@ onready var secondary_spawn = $"Armature/Skeleton/BoneAttachment7/Battery/Bullet
 
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
+
 var left = true
 var bullet_can_spawn = true
 var secondary_can_spawn = true
 
-func _physics_process(delta):
-	var rid = $".".get_rid()
-	var space_state = get_world().direct_space_state
-	var mouse_position = get_viewport().get_mouse_position()
-	
-	rayOrigin = camera.project_ray_origin(mouse_position)
-	rayEnd = rayOrigin + camera.project_ray_normal(mouse_position) * 2000
-	
-	var intersection = space_state.intersect_ray(rayOrigin, rayEnd, [rid], 3)
+func _process(delta):
+	var intersection = check_ray_hit()
 	if not intersection.empty():
 		var target_position = intersection.position
 		Input.set_custom_mouse_cursor(cursor_target)
@@ -38,7 +32,6 @@ func _physics_process(delta):
 		if Input.is_action_pressed("fire"):
 			Input.set_custom_mouse_cursor(cursor_hit)
 		if Input.is_action_pressed("fire") and bullet_can_spawn:
-			
 			var spawn_location = bullet_right_spawn if left else bullet_left_spawn
 			bullet_spawn_location(spawn_location, target_position)
 	else:
@@ -47,11 +40,18 @@ func _physics_process(delta):
 		check_for_secondary_crosshair()
 		if Input.is_action_pressed("fire") and secondary_can_spawn:
 			var bullet = bullet_scene.instance()
-			var current_secondary_crosshairs = get_tree().get_current_scene().get_tree().get_nodes_in_group("secondary-crosshairs")
+			var current_secondary_crosshairs = get_tree().get_nodes_in_group("secondary-crosshairs")
 			for target in current_secondary_crosshairs:
 				secondary_spawn_location(secondary_spawn, target.get_parent().transform.origin)
 			secondary_can_spawn = false
 		
+func check_ray_hit():
+	var rid = $".".get_rid()
+	var space_state = get_world().direct_space_state
+	var mouse_position = get_viewport().get_mouse_position()
+	rayOrigin = camera.project_ray_origin(mouse_position)
+	rayEnd = rayOrigin + camera.project_ray_normal(mouse_position) * 2000
+	return space_state.intersect_ray(rayOrigin, rayEnd, [rid], 3)
 
 func check_for_crosshair(target):
 	for n in target.get_children():
@@ -80,7 +80,6 @@ func secondary_spawn_location(spawn_location, target):
 
 func _on_Bullet_Timer_timeout():
 	bullet_can_spawn = true
-
 
 func _on_SecondaryTimer_timeout():
 	secondary_can_spawn = true
