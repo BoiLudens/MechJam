@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scripts/Viewport.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Menu Option.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/User Interface/Viewport.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/User Interface/Menu Option.gd" type="Script" id=2]
 
 [sub_resource type="ViewportTexture" id=1]
 viewport_path = NodePath("Sprite3D/Viewport")

@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Prefabs/Bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://Models/Material.material" type="Material" id=3]
 
 [sub_resource type="ArrayMesh" id=43]
 resource_name = "Mech_Cube017"
@@ -13,7 +12,6 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 876,
-"material": ExtResource( 3 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 584
@@ -28,7 +26,6 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 408,
-"material": ExtResource( 3 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 216
@@ -43,7 +40,6 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 876,
-"material": ExtResource( 3 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 584
@@ -58,7 +54,6 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 408,
-"material": ExtResource( 3 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 216
@@ -73,7 +68,6 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 936,
-"material": ExtResource( 3 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 512
@@ -88,7 +82,6 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 1272,
-"material": ExtResource( 3 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 688
@@ -103,7 +96,6 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 594,
-"material": ExtResource( 3 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 344
@@ -118,7 +110,6 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194911,
 "index_count": 2652,
-"material": ExtResource( 3 ),
 "primitive": 4,
 "skeleton_aabb": [ AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -0.674616, 3.03265, -0.668841, 1.36319, 1.65885, 1.36319 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0.00697806, 3.24862, -0.451756, 1.58907, 0.929021, 0.929031 ), AABB( 1.17795, 2.05164, -2.25332, 1.07769, 2.29173, 2.96547 ), AABB( 1.28058, 2.01159, -2.13131, 0.883725, 1.20232, 2.99998 ), AABB( 1.17651, 0.447106, -1.64926, 1.09422, 2.76794, 2.64425 ), AABB( 0.974603, -0.0455723, -2.35699, 1.49619, 1.45097, 2.45562 ), AABB( -1.58208, 3.24862, -0.451757, 1.58906, 0.929021, 0.92903 ), AABB( -2.24167, 2.05164, -2.25332, 1.07768, 2.29173, 2.96547 ), AABB( -2.15035, 2.01159, -2.13131, 0.883732, 1.20232, 2.99998 ), AABB( -2.25677, 0.447106, -1.64926, 1.09423, 2.76794, 2.64426 ), AABB( -2.45294, -0.0455723, -2.35699, 1.49619, 1.45097, 2.45562 ) ],
 "vertex_count": 1632
@@ -488,7 +479,7 @@ nodes/Blend2/position = Vector2( 264.169, 205.319 )
 nodes/Walking/node = SubResource( 27 )
 nodes/Walking/position = Vector2( -1.81983, 192.222 )
 nodes/output/position = Vector2( 532.8, 150 )
-node_connections = [ "Blend2", 0, "Walking", "Blend2", 1, "Secondary Aim", "output", 0, "Blend2" ]
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Walking", "Blend2", 1, "Secondary Aim" ]
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
@@ -617,7 +608,7 @@ bones/22/enabled = true
 bones/22/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( -1.96321e-07, -1, -5.96046e-07, -7.61221e-08, -2.98023e-07, -1, 1, -4.34507e-08, 1.6639e-08, -0.711531, 1.81963, -2.28919 )
+transform = Transform( -1.96321e-07, -1, -5.96046e-07, -7.61221e-08, -2.98023e-07, -1, 1, -4.34507e-08, 1.6639e-08, -0.711532, 1.63927, -2.28919 )
 bone_name = "Arm.R"
 
 [node name="Right Gun" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment"]
@@ -628,7 +619,7 @@ material/0 = null
 [node name="Bullet Spawn" type="Spatial" parent="Armature/Skeleton/BoneAttachment/Right Gun"]
 
 [node name="BoneAttachment2" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( 1, -8.9407e-08, 2.55925e-07, 7.7486e-07, -1, 4.63198e-08, 7.32529e-08, 7.62436e-08, -1, -0.711531, 2.52283, -2.28919 )
+transform = Transform( 1, -8.9407e-08, 2.55925e-07, 7.7486e-07, -1, 4.63198e-08, 7.32529e-08, 7.62436e-08, -1, -0.711532, 2.34247, -2.28919 )
 bone_name = "ArmJoint.R"
 
 [node name="Right Arm Connector" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment2"]
@@ -637,7 +628,7 @@ mesh = SubResource( 44 )
 material/0 = null
 
 [node name="BoneAttachment3" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( -5.13014e-08, -1, -2.68221e-07, -2.25878e-07, 1.49012e-07, -1, 1, -1.3648e-08, -2.2178e-07, -0.711534, 1.81963, 2.28919 )
+transform = Transform( -5.13014e-08, -1, -2.68221e-07, -2.25878e-07, 1.49012e-07, -1, 1, -1.3648e-08, -2.2178e-07, -0.711534, 1.63927, 2.28919 )
 bone_name = "Arm.L"
 
 [node name="Left Gun" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment3"]
@@ -648,7 +639,7 @@ material/0 = null
 [node name="Bullet Spawn" type="Spatial" parent="Armature/Skeleton/BoneAttachment3/Left Gun"]
 
 [node name="BoneAttachment4" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( -1, -8.9407e-08, 1.87118e-07, -8.9407e-08, -1, -4.7064e-08, 2.84375e-07, 1.66386e-08, 1, -0.711534, 2.52283, 2.28919 )
+transform = Transform( -1, -8.9407e-08, 1.87118e-07, -8.9407e-08, -1, -4.7064e-08, 2.84375e-07, 1.66386e-08, 1, -0.711534, 2.34247, 2.28919 )
 bone_name = "ArmJoint.L"
 
 [node name="Left Arm Connector" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment4"]
@@ -657,7 +648,7 @@ mesh = SubResource( 46 )
 material/0 = null
 
 [node name="BoneAttachment5" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( 4.30881e-07, -0.73881, 0.673914, 3.70792e-07, 0.673914, 0.73881, -1, -6.84577e-08, 5.64321e-07, 0.875775, 2.44737, -9.07305e-08 )
+transform = Transform( 4.30881e-07, -0.73881, 0.673914, 3.70792e-07, 0.673914, 0.73881, -1, -6.84577e-08, 5.64321e-07, 0.875774, 2.26701, -8.4998e-08 )
 bone_name = "Head"
 
 [node name="Head" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment5"]
@@ -666,7 +657,7 @@ mesh = SubResource( 47 )
 material/0 = null
 
 [node name="BoneAttachment6" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( 4.30881e-07, -0.73881, 0.673914, 3.70792e-07, 0.673914, 0.73881, -1, -6.84577e-08, 5.64321e-07, 0.875775, 2.44737, -9.07305e-08 )
+transform = Transform( 4.30881e-07, -0.73881, 0.673914, 3.70792e-07, 0.673914, 0.73881, -1, -6.84577e-08, 5.64321e-07, 0.875774, 2.26701, -8.4998e-08 )
 bone_name = "Head"
 
 [node name="Torso" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment6"]
@@ -675,7 +666,7 @@ mesh = SubResource( 48 )
 material/0 = null
 
 [node name="BoneAttachment7" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( 1.48739e-07, 0.999897, -0.0143612, 1.78802e-07, -0.014361, -0.999897, -1, 1.46157e-07, -1.80919e-07, 1.59416, 2.20846, 6.52363e-10 )
+transform = Transform( 1.48739e-07, 0.999897, -0.0143612, 1.78802e-07, -0.014361, -0.999897, -1, 1.46157e-07, -1.80919e-07, 1.59416, 2.02811, 6.38491e-09 )
 bone_name = "Battery"
 
 [node name="Battery" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment7"]

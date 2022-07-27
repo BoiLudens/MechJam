@@ -29,6 +29,8 @@ depth_flip_binormal = false
 material = SubResource( 5 )
 
 [node name="Particles" type="Particles"]
+emitting = false
+one_shot = true
 explosiveness = 1.0
 process_material = SubResource( 4 )
 draw_pass_1 = SubResource( 6 )
