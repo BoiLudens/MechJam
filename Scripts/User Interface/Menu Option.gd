@@ -1,3 +1,4 @@
+tool
 extends KinematicBody
 
 onready var label = $Sprite3D/Viewport/Label
