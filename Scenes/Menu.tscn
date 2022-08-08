@@ -452,22 +452,18 @@ material/0 = SubResource( 28 )
 [node name="Seat" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Chair Base/Chair Seat001"]
 transform = Transform( 0.27629, 0, 0, 0, 0, -0.262773, 0, 0.313262, 0, 2.04571e-17, 0.1466, 0.272683 )
 mesh = SubResource( 2 )
-material/0 = null
 
 [node name="Track Arm Top" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Chair Base/Chair Seat001"]
 transform = Transform( 0.119552, 0, 0, 0, 0.192935, 0, 0, 0, 0.088936, -5.6743e-09, 0.436366, 0.00541115 )
 mesh = SubResource( 3 )
-material/0 = null
 
 [node name="Track Rotater" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Chair Base/Chair Seat001"]
 transform = Transform( 0.0429521, 0, 0, 0, 0.032838, 0, 0, 0, 0.0429521, 2.06012e-09, -0.00742394, -0.00503969 )
 mesh = SubResource( 4 )
-material/0 = null
 
 [node name="Track Arm Base" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Chair Base"]
 transform = Transform( 0.0921874, 0, 0, 0, 0.192935, 0, 0, 0, 0.088936, -9.76853e-09, 0.100416, -0.016716 )
 mesh = SubResource( 5 )
-material/0 = null
 
 [node name="Monitor Base" type="Spatial" parent="Cockpit/Cockpit Armature/Cockpit Root"]
 transform = Transform( 0, -1.04308e-07, -1, -0.220931, -0.975289, 1.04308e-07, -0.975289, 0.220931, 0, -6.86311e-15, 1.77545, 1.83439 )
@@ -484,17 +480,14 @@ transform = Transform( 1, -2.21057e-08, -6.69451e-08, -5.58592e-08, 0.330896, -0
 [node name="Main Monitor001" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Monitor Base/Main Monitor2/MonitorBaseL/MonitorL"]
 transform = Transform( -1.42517e-08, 0.192935, 1.31697e-08, -0.119499, -2.29997e-08, -0.00265531, -0.0035694, -2.89293e-08, 0.0888963, -0.23858, 0.544252, 0.0522391 )
 mesh = SubResource( 6 )
-material/0 = null
 
 [node name="Track Arm Top003" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Monitor Base/Main Monitor2/MonitorBaseL/MonitorL"]
 transform = Transform( -0.119334, 2.82261e-08, 0.00536861, 0.00442679, 0.0965164, 0.0544537, -0.00569959, 0.0749623, -0.070111, 0.00158966, 0.170995, -0.00193751 )
 mesh = SubResource( 7 )
-material/0 = null
 
 [node name="Track Arm Top007" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Monitor Base/Main Monitor2/MonitorBaseL"]
 transform = Transform( -0.119334, 8.42231e-09, 0.00536861, 0.00684332, -0.0388026, 0.0841799, 0.00229142, 0.115884, 0.0281868, -0.000367641, 0.0377806, 0.00210366 )
 mesh = SubResource( 8 )
-material/0 = null
 
 [node name="MonitorBaseR" type="Spatial" parent="Cockpit/Cockpit Armature/Cockpit Root/Monitor Base/Main Monitor2"]
 transform = Transform( 2.38419e-07, -5.96046e-08, -1, 1, -1.19209e-07, 1.78814e-07, -1.78814e-07, -1, 1.19209e-07, 0.0462199, 0.222759, -0.044289 )
@@ -505,37 +498,30 @@ transform = Transform( 1, -6.46182e-08, 3.83183e-08, 5.75416e-08, 0.330896, -0.9
 [node name="Main Monitor002" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Monitor Base/Main Monitor2/MonitorBaseR/MonitorR"]
 transform = Transform( 1.42517e-08, -0.192935, 0, -0.0955596, -4.59993e-08, 0.0534429, -0.0718407, -2.29997e-08, -0.0710877, 0.23858, 0.544252, 0.0522393 )
 mesh = SubResource( 9 )
-material/0 = null
 
 [node name="Track Arm Top004" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Monitor Base/Main Monitor2/MonitorBaseR/MonitorR"]
 transform = Transform( 0.119334, -4.73648e-08, -0.0053686, -0.00010207, 0.122196, -0.00125614, 0.00721602, 0.00172923, 0.0887649, -0.00158989, 0.170993, -0.00193837 )
 mesh = SubResource( 10 )
-material/0 = null
 
 [node name="Track Arm Top005" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Monitor Base/Main Monitor2/MonitorBaseR"]
 transform = Transform( 0.119334, -5.07615e-08, -0.00536859, -0.00684329, 0.0388022, -0.0841801, 0.00229143, 0.115884, 0.0281866, 0.000367999, 0.0377795, 0.00210339 )
 mesh = SubResource( 11 )
-material/0 = null
 
 [node name="Cylinder" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Monitor Base/Main Monitor2"]
 transform = Transform( 0.0293085, -1.33407e-10, 1.00687e-09, -1.00687e-09, 0, 0.0293085, -1.33407e-10, -0.0293085, 0, -0.00350359, 0.00862685, 2.89461e-10 )
 mesh = SubResource( 12 )
-material/0 = null
 
 [node name="Main Monitor" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Monitor Base/Main Monitor2"]
 transform = Transform( 0, 1.34432e-08, -0.088936, -1.1893e-08, -0.192935, -6.19681e-09, -0.119552, 1.91931e-08, 0, -0.0569985, 0.461339, 6.17159e-08 )
 mesh = SubResource( 13 )
-material/0 = null
 
 [node name="Track Arm Top001" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Monitor Base/Main Monitor2"]
 transform = Transform( -1.42517e-07, -2.21334e-07, -0.088936, 6.5486e-09, 0.122208, -1.61075e-07, 0.119552, -6.69434e-09, -1.0602e-07, -0.00569977, 0.36362, -8.0145e-09 )
 mesh = SubResource( 14 )
-material/0 = null
 
 [node name="Track Arm Base001" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/Monitor Base"]
 transform = Transform( -1.53854e-07, 0.0184795, -0.0879423, 3.43425e-08, 0.122579, 0.0132578, 0.0921874, -1.66249e-08, -1.48428e-07, 0.00802386, 0.0649053, -9.18587e-09 )
 mesh = SubResource( 15 )
-material/0 = null
 
 [node name="ControlBotL" type="Spatial" parent="Cockpit/Cockpit Armature/Cockpit Root"]
 transform = Transform( 1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, -0.373462, 0.0164573, 0.64709 )
@@ -552,22 +538,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00257e-09, 0.318178, 3.6678
 [node name="Cube005" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/ControlBotL/ControlMidL/ControlTopL/ControlHandleL"]
 transform = Transform( 0.0696377, 0, -7.01055e-09, 0, 0.0218707, 0, 1.66029e-08, 0, 0.0294044, 0.00196689, 0.0798473, 0.00492814 )
 mesh = SubResource( 16 )
-material/0 = null
 
 [node name="Cube004" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/ControlBotL/ControlMidL/ControlTopL"]
 transform = Transform( 0.0419964, 0, -7.01055e-09, 0, 0.147571, 0, 1.00127e-08, 0, 0.0294044, 0.00196689, 0.165169, 0.00492814 )
 mesh = SubResource( 17 )
-material/0 = null
 
 [node name="Cube003" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/ControlBotL/ControlMidL"]
 transform = Transform( 0.0419964, 0, -7.01055e-09, 0, 0.147571, 0, 1.00127e-08, 0, 0.0294044, 0.00196689, 0.165032, 0.00492814 )
 mesh = SubResource( 18 )
-material/0 = null
 
 [node name="Cube002" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/ControlBotL"]
 transform = Transform( 0.0419964, 0, -7.01055e-09, 0, 0.147571, 0, 1.00127e-08, 0, 0.0294044, 0.00196689, 0.13721, 0.00492814 )
 mesh = SubResource( 19 )
-material/0 = null
 
 [node name="ControlBotR" type="Spatial" parent="Cockpit/Cockpit Armature/Cockpit Root"]
 transform = Transform( 1, 0, -2.38419e-07, 0, 1, 0, 2.38419e-07, 0, 1, 0.373462, 0.0164573, 0.64709 )
@@ -584,37 +566,32 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00257e-09, 0.318178, 3.66782
 [node name="Cylinder002" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/ControlBotR/ControlMidR/ControlTopR/ControlHandleR"]
 transform = Transform( -6.09365e-09, 0.078594, 0, 0, 0, -0.0255586, -0.0255586, -1.87383e-08, 0, 0.00377658, 0.139441, 0.00208113 )
 mesh = SubResource( 20 )
-material/0 = null
 
 [node name="Cube008" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/ControlBotR/ControlMidR/ControlTopR"]
 transform = Transform( 0.0419964, 0, 7.01055e-09, 0, 0.147571, 0, -1.00127e-08, 0, 0.0294044, 0.00215214, 0.165169, 0.00492814 )
 mesh = SubResource( 21 )
-material/0 = null
 
 [node name="Cube007" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/ControlBotR/ControlMidR"]
 transform = Transform( 0.0419964, 0, 7.01055e-09, 0, 0.147571, 0, -1.00127e-08, 0, 0.0294044, 0.00215214, 0.165032, 0.00492814 )
 mesh = SubResource( 22 )
-material/0 = null
 
 [node name="Cube006" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root/ControlBotR"]
 transform = Transform( 0.0419964, 0, 7.01055e-09, 0, 0.147571, 0, -1.00127e-08, 0, 0.0294044, 0.00215214, 0.13721, 0.00492814 )
 mesh = SubResource( 23 )
-material/0 = null
 
 [node name="Chair Track" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root"]
 transform = Transform( 0.144516, 0, 0, 0, 0.0474723, 0, 0, 0, 0.826915, 0, 0.0434696, 2.11932 )
 mesh = SubResource( 24 )
-material/0 = null
 
 [node name="Cockpit" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root"]
 transform = Transform( -0.235821, 0, 0, 0, -0.30533, 0, 0, 0, -0.30533, 8.78501e-09, 0.909103, 1.47652 )
 mesh = SubResource( 25 )
-material/0 = null
 
 [node name="Screen Track" type="MeshInstance" parent="Cockpit/Cockpit Armature/Cockpit Root"]
 transform = Transform( 0.144516, 0, 0, 0, -0.0476167, -0.128462, 0, 0.0041659, -1.46834, 0, 1.75679, 1.477 )
 mesh = SubResource( 26 )
-material/0 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cockpit"]
 "anims/Seat Ready" = SubResource( 27 )
+
+[node name="Spatial" type="Spatial" parent="."]

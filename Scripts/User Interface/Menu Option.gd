@@ -1,7 +1,7 @@
 tool
 extends KinematicBody
 
-onready var label = $Sprite3D/Viewport/Label
+onready var label = $Label3D
 
 export var label_text = 'default'
 

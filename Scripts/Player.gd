@@ -10,9 +10,9 @@ var cursor_target = load("res://Textures/cursor3.png")
 
 
 onready var camera = $ClippedCamera
-onready var bullet_left_spawn = $"Armature/Skeleton/BoneAttachment3/Left Gun/Bullet Spawn"
-onready var bullet_right_spawn = $"Armature/Skeleton/BoneAttachment/Right Gun/Bullet Spawn"
-onready var secondary_spawn = $"Armature/Skeleton/BoneAttachment7/Battery/Bullet Spawn"
+onready var bullet_left_spawn = $"Armature/Skeleton/Left Gun/Bullet Spawn"
+onready var bullet_right_spawn = $"Armature/Skeleton/Right Gun/Bullet Spawn"
+onready var secondary_spawn = $"Armature/Skeleton/Secondary/Bullet Spawn"
 
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
@@ -39,7 +39,6 @@ func _process(delta):
 	if Input.is_action_pressed("secondary"):
 		check_for_secondary_crosshair()
 		if Input.is_action_pressed("fire") and secondary_can_spawn:
-			var bullet = bullet_scene.instance()
 			var current_secondary_crosshairs = get_tree().get_nodes_in_group("secondary-crosshairs")
 			for target in current_secondary_crosshairs:
 				secondary_spawn_location(secondary_spawn, target.get_parent().transform.origin)

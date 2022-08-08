@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Scripts/MechStation.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/User Interface/MechPartMenu.gd" type="Script" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Mech_Cube017"
@@ -100,14 +100,6 @@ surfaces/0 = {
 "vertex_count": 344
 }
 
-[sub_resource type="BoxShape" id=12]
-
-[sub_resource type="SpatialMaterial" id=8]
-albedo_color = Color( 0.462745, 0.0509804, 0.0509804, 1 )
-
-[sub_resource type="SpatialMaterial" id=9]
-albedo_color = Color( 0.0980392, 0.117647, 0.654902, 1 )
-
 [sub_resource type="ArrayMesh" id=10]
 resource_name = "Mech_Cylinder003"
 surfaces/0 = {
@@ -196,12 +188,39 @@ bind/22/bone = -1
 bind/22/pose = Transform( 0.999977, 0.00255608, 0.00623746, 0.00254124, -0.999994, 0.00236749, 0.00624367, -0.00235168, -0.999978, 1.71006, 0.778704, -1.12468 )
 
 [node name="MechStation" type="Spatial"]
-script = ExtResource( 1 )
 
-[node name="Armature" type="Spatial" parent="."]
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+margin_left = 7.0
+margin_top = 174.0
+margin_right = 317.0
+margin_bottom = 343.0
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+margin_right = 310.0
+margin_bottom = 20.0
+text = "Secondary Part 1"
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer"]
+margin_top = 24.0
+margin_right = 310.0
+margin_bottom = 44.0
+text = "Secondary Part 2"
+
+[node name="Button3" type="Button" parent="Control/VBoxContainer"]
+margin_top = 48.0
+margin_right = 310.0
+margin_bottom = 68.0
+text = "Secondary Part 3"
+
+[node name="Armature" type="Spatial" parent="Control"]
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 0.00592083, 4.35287, -0.862143 )
 
-[node name="Skeleton" type="Skeleton" parent="Armature"]
+[node name="Skeleton" type="Skeleton" parent="Control/Armature"]
 bones/0/name = "LegIK.R"
 bones/0/parent = -1
 bones/0/rest = Transform( -2.38419e-07, 1, 5.96046e-08, -5.96046e-08, 0, -1, -1, -1.78814e-07, 0, -0.273394, -4.26758, -1.70915 )
@@ -318,119 +337,81 @@ bones/22/rest = Transform( -0.999941, -0.00817139, 0.00726946, -0.00200339, 0.79
 bones/22/enabled = true
 bones/22/bound_children = [  ]
 
-[node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton"]
+[node name="BoneAttachment" type="BoneAttachment" parent="Control/Armature/Skeleton"]
 transform = Transform( -1.96321e-07, -1, -5.96046e-07, -7.61221e-08, -2.98023e-07, -1, 1, -4.34507e-08, 1.6639e-08, -0.711532, 0.929519, -2.28919 )
 bone_name = "Arm.R"
 
-[node name="Right Gun" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment"]
+[node name="Right Gun" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment"]
 transform = Transform( 3.57628e-07, 1.78814e-07, 1, -1, 2.38419e-07, 4.17233e-07, -2.98023e-07, -1, 1.19209e-07, 0.0331595, 1.9428, 0.667247 )
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="Bullet Spawn" type="Spatial" parent="Armature/Skeleton/BoneAttachment/Right Gun"]
+[node name="Bullet Spawn" type="Spatial" parent="Control/Armature/Skeleton/BoneAttachment/Right Gun"]
 
-[node name="BoneAttachment2" type="BoneAttachment" parent="Armature/Skeleton"]
+[node name="BoneAttachment2" type="BoneAttachment" parent="Control/Armature/Skeleton"]
 transform = Transform( 1, -8.9407e-08, 2.55925e-07, 7.7486e-07, -1, 4.63198e-08, 7.32529e-08, 7.62436e-08, -1, -0.711532, 1.63272, -2.28919 )
 bone_name = "ArmJoint.R"
 
-[node name="Right Arm Connector" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment2"]
+[node name="Right Arm Connector" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment2"]
 transform = Transform( 1, -6.08716e-08, 3.95117e-07, -6.08716e-08, -1, 3.92616e-08, 3.95117e-07, -3.92616e-08, -1, -0.0289673, 1.2476, -0.0295033 )
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="BoneAttachment3" type="BoneAttachment" parent="Armature/Skeleton"]
+[node name="BoneAttachment3" type="BoneAttachment" parent="Control/Armature/Skeleton"]
 transform = Transform( -5.13014e-08, -1, -2.68221e-07, -2.25878e-07, 1.49012e-07, -1, 1, -1.3648e-08, -2.2178e-07, -0.711534, 0.929517, 2.28919 )
 bone_name = "Arm.L"
 
-[node name="Left Gun" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment3"]
+[node name="Left Gun" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment3"]
 transform = Transform( 1.78814e-07, 0, 1, -1, 5.96046e-08, 2.08616e-07, -8.9407e-08, -1, 0, -0.0130374, 1.98318, 0.676164 )
 mesh = SubResource( 3 )
 material/0 = null
 
-[node name="Bullet Spawn" type="Spatial" parent="Armature/Skeleton/BoneAttachment3/Left Gun"]
+[node name="Bullet Spawn" type="Spatial" parent="Control/Armature/Skeleton/BoneAttachment3/Left Gun"]
 
-[node name="BoneAttachment4" type="BoneAttachment" parent="Armature/Skeleton"]
+[node name="BoneAttachment4" type="BoneAttachment" parent="Control/Armature/Skeleton"]
 transform = Transform( -1, -8.9407e-08, 1.87118e-07, -8.9407e-08, -1, -4.7064e-08, 2.84375e-07, 1.66386e-08, 1, -0.711534, 1.63272, 2.28919 )
 bone_name = "ArmJoint.L"
 
-[node name="Left Arm Connector" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment4"]
+[node name="Left Arm Connector" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment4"]
 transform = Transform( -1, 1.49012e-08, 4.28894e-07, -1.49012e-08, -1, -7.42887e-09, 4.28894e-07, -7.42887e-09, 1, 0.0289681, 1.24761, -0.0295043 )
 mesh = SubResource( 4 )
 material/0 = null
 
-[node name="BoneAttachment5" type="BoneAttachment" parent="Armature/Skeleton"]
+[node name="BoneAttachment5" type="BoneAttachment" parent="Control/Armature/Skeleton"]
 transform = Transform( 4.30881e-07, -0.73881, 0.673914, 3.70792e-07, 0.673914, 0.73881, -1, -6.84577e-08, 5.64321e-07, 0.875774, 1.55726, -6.24371e-08 )
 bone_name = "Head"
 
-[node name="Head" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment5"]
+[node name="Head" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment5"]
 transform = Transform( 1.78814e-07, 5.06639e-07, -1, -0.73881, 0.673914, 1.78814e-07, 0.673914, 0.73881, 4.76837e-07, -6.09085e-07, 2.81817, -1.56192 )
 mesh = SubResource( 5 )
 material/0 = null
 
-[node name="BoneAttachment6" type="BoneAttachment" parent="Armature/Skeleton"]
+[node name="BoneAttachment6" type="BoneAttachment" parent="Control/Armature/Skeleton"]
 transform = Transform( 4.30881e-07, -0.73881, 0.673914, 3.70792e-07, 0.673914, 0.73881, -1, -6.84577e-08, 5.64321e-07, 0.875774, 1.55726, -6.24371e-08 )
 bone_name = "Head"
 
-[node name="Torso" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment6"]
+[node name="Torso" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment6"]
 transform = Transform( 1.78814e-07, 5.06639e-07, -1, -0.73881, 0.673914, 1.78814e-07, 0.673914, 0.73881, 4.76837e-07, 1.76951e-08, 0.23565, -0.144543 )
 mesh = SubResource( 6 )
 material/0 = null
 
-[node name="BoneAttachment7" type="BoneAttachment" parent="Armature/Skeleton"]
+[node name="BoneAttachment7" type="BoneAttachment" parent="Control/Armature/Skeleton"]
 transform = Transform( 1.48739e-07, 0.999897, -0.0143612, 1.78802e-07, -0.014361, -0.999897, -1, 1.46157e-07, -1.80919e-07, 1.59416, 1.31835, 2.89458e-08 )
 bone_name = "Battery"
 
-[node name="Battery" type="KinematicBody" parent="Armature/Skeleton/BoneAttachment7"]
-transform = Transform( 1, 1.84741e-13, -4.21885e-15, -1.84741e-13, 1, 0, -3.10862e-15, 0, 1, -3.25963e-09, 1.68338, -1.27012 )
-
-[node name="Battery" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment7/Battery"]
-transform = Transform( -1.19209e-07, 1.78814e-07, -1, 0.999897, -0.0143611, -5.96046e-08, -0.0143611, -0.999897, -2.38419e-07, 0, 0, 0 )
+[node name="Battery" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment7"]
+transform = Transform( -1.19209e-07, 1.78814e-07, -1, 0.999897, -0.0143611, -5.96044e-08, -0.0143611, -0.999897, -2.38419e-07, -3.72529e-09, 1.68338, -1.27012 )
 mesh = SubResource( 7 )
-skeleton = NodePath("../..")
 material/0 = null
 
-[node name="Bullet Spawn" type="Spatial" parent="Armature/Skeleton/BoneAttachment7/Battery/Battery"]
+[node name="Bullet Spawn" type="Spatial" parent="Control/Armature/Skeleton/BoneAttachment7/Battery"]
 
-[node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/BoneAttachment7/Battery"]
-transform = Transform( 1.80251, 8.52651e-14, -2.35367e-14, -8.52651e-14, 1, 0, -8.88178e-16, 0, 2.91664, 0, 0, 0 )
-shape = SubResource( 12 )
-
-[node name="Battery2" type="KinematicBody" parent="Armature/Skeleton/BoneAttachment7"]
-transform = Transform( 1, 2.84217e-14, -4.21885e-15, -2.84217e-14, 1, 0, -5.32907e-15, 0, 1, 7.07952, 0, 0 )
-
-[node name="Battery2" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment7/Battery2"]
-transform = Transform( -1.19209e-07, 1.78814e-07, -1, 0.999897, -0.0143611, -5.96045e-08, -0.0143611, -0.999897, -2.38419e-07, 0, 0, 0 )
-material_override = SubResource( 8 )
-mesh = SubResource( 7 )
-skeleton = NodePath("../..")
-material/0 = null
-
-[node name="Bullet Spawn" type="Spatial" parent="Armature/Skeleton/BoneAttachment7/Battery2/Battery2"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/BoneAttachment7/Battery2"]
-transform = Transform( 1.80251, 9.9476e-14, -2.22045e-14, -8.52651e-14, 1, 0, 0, 0, 2.91664, 0, 0, 0 )
-shape = SubResource( 12 )
-
-[node name="Battery3" type="KinematicBody" parent="Armature/Skeleton/BoneAttachment7"]
-transform = Transform( 1, 5.68434e-14, -4.21885e-15, -5.68434e-14, 1, 0, -4.88498e-15, 0, 1, -10.781, 0, 0 )
-
-[node name="Battery3" type="MeshInstance" parent="Armature/Skeleton/BoneAttachment7/Battery3"]
-transform = Transform( -1.19209e-07, 1.78814e-07, -1, 0.999897, -0.0143611, -5.96045e-08, -0.0143611, -0.999897, -2.38419e-07, 0, 0, 0 )
-material_override = SubResource( 9 )
-mesh = SubResource( 7 )
-skeleton = NodePath("../..")
-material/0 = null
-
-[node name="Bullet Spawn" type="Spatial" parent="Armature/Skeleton/BoneAttachment7/Battery3/Battery3"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Armature/Skeleton/BoneAttachment7/Battery3"]
-transform = Transform( 1.80251, 1.13687e-13, -2.35367e-14, -8.52651e-14, 1, 0, -8.88178e-16, 0, 2.91664, 0, 0, 0 )
-shape = SubResource( 12 )
-
-[node name="Lower Body" type="MeshInstance" parent="Armature/Skeleton"]
+[node name="Lower Body" type="MeshInstance" parent="Control/Armature/Skeleton"]
 mesh = SubResource( 10 )
 skin = SubResource( 11 )
 material/0 = null
 
 [node name="ClippedCamera" type="ClippedCamera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431705, 10.9231, 16.0672 )
+
+[connection signal="pressed" from="Control/VBoxContainer/Button" to="Control" method="_on_Button_pressed"]
