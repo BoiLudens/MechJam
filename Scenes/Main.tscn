@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Mob.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Scripts/MechFollow.gd" type="Script" id=4]
 [ext_resource path="res://UserInterface/Secondary-Crosshair.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Area.gd" type="Script" id=6]
+[ext_resource path="res://Prefabs/ResultsScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/GameManager/GameManager.gd" type="Script" id=8]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -20,6 +22,11 @@ _data = {
 [sub_resource type="BoxShape" id=5]
 
 [node name="Main" type="Node"]
+script = ExtResource( 8 )
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform( 0.0325796, 0, 0.999469, 0, 7.67456, 0, -7.67049, 0, 0.250034, -35.9639, 14.9343, 0 )
+text = "wefawefwefe"
 
 [node name="Ground" type="StaticBody" parent="."]
 transform = Transform( 4.48124, 0, 0, 0, 1, 0, 0, 0, 1, -132.613, 0, 0 )
@@ -57,18 +64,24 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18219, 0, -0.0568438 )
 script = ExtResource( 4 )
 
 [node name="Player" parent="Path/PathFollow" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.40919, 0 )
 collision_mask = 22
 crosshair_scene = ExtResource( 3 )
 secondary_crosshair_scene = ExtResource( 5 )
 
-[node name="Area" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 0 )
+[node name="FinishArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -66, 0, 0 )
 collision_layer = 16
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
+[node name="CollisionShape" type="CollisionShape" parent="FinishArea"]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 11, 0 )
 shape = SubResource( 5 )
 
-[connection signal="body_entered" from="Area" to="Area" method="_on_Area_body_entered"]
+[node name="ResultsScreen" parent="FinishArea" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1.81566, 0, 0, 0, 1.81566, 0, 17, -5 )
+
+[connection signal="body_entered" from="FinishArea" to="." method="_on_FinishArea_body_entered"]
+[connection signal="body_entered" from="FinishArea" to="Path/PathFollow" method="_on_FinishArea_body_entered"]
+[connection signal="body_entered" from="FinishArea" to="Path/PathFollow/Player" method="_on_FinishArea_body_entered"]
+[connection signal="body_entered" from="FinishArea" to="FinishArea" method="_on_FinishArea_body_entered"]

@@ -10,9 +10,11 @@ var cursor_target = load("res://Textures/cursor3.png")
 
 
 onready var camera = $ClippedCamera
-onready var bullet_left_spawn = $"Armature/Skeleton/Left Gun/Bullet Spawn"
-onready var bullet_right_spawn = $"Armature/Skeleton/Right Gun/Bullet Spawn"
-onready var secondary_spawn = $"Armature/Skeleton/Secondary/Bullet Spawn"
+onready var animator = $AnimationTree
+
+onready var bullet_left_spawn = $"Armature/Skeleton/BoneAttachment/Bullet SpawnL"
+onready var bullet_right_spawn = $"Armature/Skeleton/BoneAttachment2/Bullet SpawnR"
+onready var secondary_spawn = $"Armature/Skeleton/BoneAttachment3/Bullet SpawnS"
 
 var rayOrigin = Vector3()
 var rayEnd = Vector3()
@@ -59,7 +61,7 @@ func check_for_crosshair(target):
 	return false
 	
 func check_for_secondary_crosshair():
-	var current_crosshairs = get_tree().get_current_scene().get_tree().get_nodes_in_group("crosshairs")
+	var current_crosshairs = get_tree().get_nodes_in_group("crosshairs")
 	for crosshair in current_crosshairs:
 		var secondary_crosshair = secondary_crosshair_scene.instance()
 		crosshair.get_parent().add_child(secondary_crosshair)
@@ -82,3 +84,7 @@ func _on_Bullet_Timer_timeout():
 
 func _on_SecondaryTimer_timeout():
 	secondary_can_spawn = true
+
+
+func _on_FinishArea_body_entered(body):
+	animator.set("parameters/BlendSpace1D/blend_position", -1.0)
