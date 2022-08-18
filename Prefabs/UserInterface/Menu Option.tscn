@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/User Interface/Menu Option.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=2]
+
+[node name="Menu Option" type="KinematicBody"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="Label3D" type="Label3D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.362, 0, 0, 0, -5.59506e-09, -0.152, 0, 0.128, -6.64413e-09, 0, 0, 0 )
+shape = SubResource( 2 )
