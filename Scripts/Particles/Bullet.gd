@@ -18,9 +18,8 @@ func instantiate(start, target):
 
 func _on_Bullet_body_entered(body):
 	if body.is_in_group('mobs'):
-		var hit_particles = hit_particles_scene.instance()
-		get_parent().add_child(hit_particles)
-		hit_particles.transform = transform
+		spawn_particles()
+		spawn_chips()
 		body.queue_free()
 		queue_free()
 	
@@ -29,13 +28,11 @@ func _on_Timer_timeout():
 
 # Called when the node enters the scene tree for the first time.
 func spawn_chips():
-	for n in 10:
-		
-		rng.randomize()
-		# Vector3(rng.randf_range(-10.0, 10.0),
-		# rng.randf_range(-10.0, 10.0),
-		# rng.randf_range(-10.0, 10.0))
-		
-		var chip = chip_scene.instance()
-		chip.set_target(get_parent().transform.origin)
-		add_child(chip)
+	var chip = chip_scene.instance()
+	get_parent().add_child(chip)
+	chip.transform = transform
+
+func spawn_particles():
+	var hit_particles = hit_particles_scene.instance()
+	get_parent().add_child(hit_particles)
+	hit_particles.transform = transform

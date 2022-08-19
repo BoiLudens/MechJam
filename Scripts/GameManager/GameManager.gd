@@ -4,8 +4,11 @@ var enemies_hit = 0
 var chips_collected = 0
 var robo_bois_saved = 0
 
+onready var player = $Path/PathFollow/Player
 onready var results = $FinishArea/ResultsScreen
 onready var label = $Label3D
+
+
 func _ready():
 	label.text = "start"
 	

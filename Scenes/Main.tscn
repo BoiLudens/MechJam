@@ -65,6 +65,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18219, 0, -0.0568438 )
 script = ExtResource( 4 )
 
 [node name="Player" parent="Path/PathFollow" instance=ExtResource( 1 )]
+unique_name_in_owner = true
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.40919, 0 )
 collision_mask = 22
 crosshair_scene = ExtResource( 3 )
@@ -84,7 +85,6 @@ transform = Transform( 1, 0, 0, 0, 1.81566, 0, 0, 0, 1.81566, 0, 17, -5 )
 
 [node name="HomingChip" parent="." instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -55, 3, -19 )
-node_path = NodePath("../Path/PathFollow/Player")
 
 [connection signal="body_entered" from="FinishArea" to="." method="_on_FinishArea_body_entered"]
 [connection signal="body_entered" from="FinishArea" to="Path/PathFollow" method="_on_FinishArea_body_entered"]
