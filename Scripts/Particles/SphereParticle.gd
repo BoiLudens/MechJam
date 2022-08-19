@@ -13,6 +13,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var path = Path.new()
+	pass
 	
+func create_new_path():
+	var path = Path.new()
+	var curve = Curve3D.new()
+	curve.add_point()
 	

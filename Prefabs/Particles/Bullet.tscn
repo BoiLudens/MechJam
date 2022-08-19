@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Particles/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://Particles/HitParticles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/Particles/Chips.tscn" type="PackedScene" id=2]
 
 [sub_resource type="SpatialMaterial" id=3]
 

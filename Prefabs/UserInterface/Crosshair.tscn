@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Textures/Crosshair.png" type="Texture" id=1]
+[ext_resource path="res://Models/Materials/Textures/Crosshair.png" type="Texture" id=1]
 
 [node name="Crosshair" type="Sprite3D" groups=["crosshairs"]]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 1, 0, 0, 0 )

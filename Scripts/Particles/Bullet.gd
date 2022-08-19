@@ -1,6 +1,10 @@
 extends RigidBody
 
 export (PackedScene) var hit_particles_scene
+export (PackedScene) var chip_scene
+
+var rng = RandomNumberGenerator.new()
+var chip_list = []
 
 func _ready():
 	set_as_toplevel(true)
@@ -22,3 +26,16 @@ func _on_Bullet_body_entered(body):
 	
 func _on_Timer_timeout():
 	queue_free()
+
+# Called when the node enters the scene tree for the first time.
+func spawn_chips():
+	for n in 10:
+		
+		rng.randomize()
+		# Vector3(rng.randf_range(-10.0, 10.0),
+		# rng.randf_range(-10.0, 10.0),
+		# rng.randf_range(-10.0, 10.0))
+		
+		var chip = chip_scene.instance()
+		chip.set_target(get_parent().transform.origin)
+		add_child(chip)

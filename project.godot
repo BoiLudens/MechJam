@@ -26,7 +26,7 @@ config/icon="res://icon.png"
 
 [display]
 
-mouse_cursor/custom_image="res://Textures/cursor2.png"
+mouse_cursor/custom_image="res://Models/Materials/Textures/cursor2.png"
 
 [gdnative]
 

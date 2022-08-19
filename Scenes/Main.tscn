@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Prefabs/Agents/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Agents/Mob.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scripts/Level/Area.gd" type="Script" id=6]
 [ext_resource path="res://Prefabs/UserInterface/ResultsScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/GameManager/GameManager.gd" type="Script" id=8]
+[ext_resource path="res://Prefabs/Particles/HomingChip.tscn" type="PackedScene" id=9]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -80,6 +81,10 @@ shape = SubResource( 5 )
 
 [node name="ResultsScreen" parent="FinishArea" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1.81566, 0, 0, 0, 1.81566, 0, 17, -5 )
+
+[node name="HomingChip" parent="." instance=ExtResource( 9 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -55, 3, -19 )
+node_path = NodePath("../Path/PathFollow/Player")
 
 [connection signal="body_entered" from="FinishArea" to="." method="_on_FinishArea_body_entered"]
 [connection signal="body_entered" from="FinishArea" to="Path/PathFollow" method="_on_FinishArea_body_entered"]
