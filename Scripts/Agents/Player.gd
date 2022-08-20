@@ -69,14 +69,17 @@ func check_for_secondary_crosshair():
 
 func bullet_spawn_location(spawn_location, target):
 	var bullet = bullet_scene.instance()
-	bullet_left_spawn.add_child(bullet)
+	# bullet_left_spawn.add_child(bullet)
+	get_parent().add_child(bullet)
+	# bullet.transform = bullet_left_spawn.transform
 	bullet.instantiate(spawn_location.global_transform, target)
 	left = not left
 	bullet_can_spawn = false
 
 func secondary_spawn_location(spawn_location, target):
 	var bullet = bullet_scene.instance()
-	secondary_spawn.add_child(bullet)
+	# secondary_spawn.add_child(bullet)
+	get_parent().add_child(bullet)
 	bullet.instantiate(spawn_location.global_transform, target)
 
 func _on_Bullet_Timer_timeout():

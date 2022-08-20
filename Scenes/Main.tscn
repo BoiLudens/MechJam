@@ -67,7 +67,6 @@ script = ExtResource( 4 )
 [node name="Player" parent="Path/PathFollow" instance=ExtResource( 1 )]
 unique_name_in_owner = true
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.40919, 0 )
-collision_mask = 22
 crosshair_scene = ExtResource( 3 )
 secondary_crosshair_scene = ExtResource( 5 )
 

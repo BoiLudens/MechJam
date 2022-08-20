@@ -7,4 +7,5 @@ func _ready():
 
 
 func _on_FinishArea_body_entered(body):
-	results.visible = true
+	if body.is_in_group("players"):
+		results.visible = true

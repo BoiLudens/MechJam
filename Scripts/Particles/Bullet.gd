@@ -30,6 +30,7 @@ func _on_Timer_timeout():
 func spawn_chips():
 	var chip = chip_scene.instance()
 	get_parent().add_child(chip)
+	chip.set_target(get_parent())
 	chip.transform = transform
 
 func spawn_particles():

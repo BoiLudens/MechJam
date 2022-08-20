@@ -42,7 +42,7 @@ nodes/OneShot/position = Vector2( 160, 100 )
 "nodes/Secondary Aim/node" = SubResource( 41 )
 "nodes/Secondary Aim/position" = Vector2( -49, 176 )
 nodes/output/position = Vector2( 532.8, 150 )
-node_connections = [ "OneShot", 0, "Animation", "OneShot", 1, "Secondary Aim", "Blend2", 0, "OneShot", "Blend2", 1, "BlendSpace1D", "output", 0, "Blend2" ]
+node_connections = [ "Blend2", 0, "OneShot", "Blend2", 1, "BlendSpace1D", "OneShot", 0, "Animation", "OneShot", 1, "Secondary Aim", "output", 0, "Blend2" ]
 
 [sub_resource type="BoxShape" id=13]
 
@@ -476,9 +476,9 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, -4.16334e-16, 0, 1, 1, 1, 1, 0.0416667, 1, 0, 0, 0, 0, -4.16334e-16, 0, 1, 1, 1, 1 )
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody" groups=["players"]]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
-collision_mask = 6
+collision_mask = 22
 script = ExtResource( 2 )
 bullet_scene = ExtResource( 1 )
 
@@ -550,7 +550,7 @@ bones/7/name = "Arm.R"
 bones/7/parent = 6
 bones/7/rest = Transform( -1.19209e-07, -1, -3.57628e-07, -1.19209e-07, -3.57628e-07, 1, -1, 1.19209e-07, -1.19209e-07, 9.42616e-08, 0.703199, 2.28525e-08 )
 bones/7/enabled = true
-bones/7/bound_children = [  ]
+bones/7/bound_children = [ NodePath("BoneAttachment") ]
 bones/8/name = "ArmJoint.L"
 bones/8/parent = 5
 bones/8/rest = Transform( -7.15256e-07, -3.8743e-07, -1, 0.73881, -0.673914, -2.38419e-07, -0.673914, -0.73881, 6.55651e-07, -2.28919, 1.22357, -1.01396 )
@@ -560,12 +560,12 @@ bones/9/name = "Arm.L"
 bones/9/parent = 8
 bones/9/rest = Transform( 2.38419e-07, 1, 1.78814e-07, 1.78814e-07, -2.38419e-07, 1, 1, -2.98023e-07, -2.38419e-07, 1.01714e-07, 0.703199, 1.58983e-07 )
 bones/9/enabled = true
-bones/9/bound_children = [  ]
+bones/9/bound_children = [ NodePath("BoneAttachment2") ]
 bones/10/name = "Secondary"
 bones/10/parent = 4
 bones/10/rest = Transform( -1, -3.17832e-08, -1.18753e-07, 1.19197e-07, -0.0143611, -0.999897, 3.00745e-08, -0.999897, 0.0143611, -2.27878e-08, 1.01592, -0.718387 )
 bones/10/enabled = true
-bones/10/bound_children = [  ]
+bones/10/bound_children = [ NodePath("BoneAttachment3") ]
 bones/11/name = "Hip.R"
 bones/11/parent = 3
 bones/11/rest = Transform( -1, 1.70857e-07, -2.18557e-07, -2.18557e-07, 0, 1, 1.70857e-07, 1, 0, 5.64605e-08, -4.76837e-07, 0.331001 )
@@ -668,21 +668,21 @@ bones/30/enabled = true
 bones/30/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( -3.8314e-08, -1, -4.47035e-07, 8.83617e-08, 2.68221e-07, -1, 1, -7.3253e-08, 7.62436e-08, -0.711532, 1.98563, -2.28919 )
+transform = Transform( -3.8314e-08, -1, -4.47035e-07, 8.83617e-08, 2.68221e-07, -1, 1, -7.3253e-08, 7.62436e-08, -0.711532, 2.01246, -2.28919 )
 bone_name = "Arm.R"
 
 [node name="Bullet SpawnL" type="Spatial" parent="Armature/Skeleton/BoneAttachment"]
 transform = Transform( -1, 9.97519e-09, 7.02609e-08, -7.02609e-08, 3.57628e-07, -1, -9.97521e-09, -1, -3.57628e-07, 0.00363197, 2.15441, 0.0319163 )
 
 [node name="BoneAttachment2" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( -5.13014e-08, -1, -2.68221e-07, -2.25878e-07, 1.49012e-07, -1, 1, -1.36479e-08, -2.2178e-07, -0.711534, 1.98563, 2.28919 )
+transform = Transform( -5.13014e-08, -1, -2.68221e-07, -2.25878e-07, 1.49012e-07, -1, 1, -1.36479e-08, -2.2178e-07, -0.711534, 2.01246, 2.28919 )
 bone_name = "Arm.L"
 
 [node name="Bullet SpawnR" type="Spatial" parent="Armature/Skeleton/BoneAttachment2"]
 transform = Transform( -1, -1.22407e-07, -5.9637e-08, 5.96369e-08, 1.78814e-07, -1, 1.22407e-07, -1, -1.19209e-07, 0.0137498, 2.15441, 0.0319163 )
 
 [node name="BoneAttachment3" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( 1.48739e-07, 0.999897, -0.0143612, 1.78802e-07, -0.014361, -0.999897, -1, 1.46157e-07, -1.80919e-07, 1.59416, 2.37446, -4.44942e-09 )
+transform = Transform( 1.48739e-07, 0.999897, -0.0143612, 1.78802e-07, -0.014361, -0.999897, -1, 1.46157e-07, -1.80919e-07, 1.59416, 2.40129, -5.30213e-09 )
 bone_name = "Secondary"
 
 [node name="Bullet SpawnS" type="Spatial" parent="Armature/Skeleton/BoneAttachment3"]
