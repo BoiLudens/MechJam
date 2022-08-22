@@ -20,7 +20,7 @@ func _on_Bullet_body_entered(body):
 	if body.is_in_group('mobs'):
 		spawn_particles()
 		spawn_chips()
-		body.queue_free()
+		body.take_damage()
 		queue_free()
 	
 func _on_Timer_timeout():

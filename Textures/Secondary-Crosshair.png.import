@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Crosshair.png-8e2fae5a9d83b217f383eaeee204fbb3.s3tc.stex"
-path.etc2="res://.import/Crosshair.png-8e2fae5a9d83b217f383eaeee204fbb3.etc2.stex"
+path.s3tc="res://.import/Secondary-Crosshair.png-fd68b5a49da4d6615af931b58ed13edc.s3tc.stex"
+path.etc2="res://.import/Secondary-Crosshair.png-fd68b5a49da4d6615af931b58ed13edc.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/Materials/Textures/Crosshair.png"
-dest_files=[ "res://.import/Crosshair.png-8e2fae5a9d83b217f383eaeee204fbb3.s3tc.stex", "res://.import/Crosshair.png-8e2fae5a9d83b217f383eaeee204fbb3.etc2.stex" ]
+source_file="res://Textures/Secondary-Crosshair.png"
+dest_files=[ "res://.import/Secondary-Crosshair.png-fd68b5a49da4d6615af931b58ed13edc.s3tc.stex", "res://.import/Secondary-Crosshair.png-fd68b5a49da4d6615af931b58ed13edc.etc2.stex" ]
 
 [params]
 

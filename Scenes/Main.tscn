@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Prefabs/Agents/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Agents/Mob.tscn" type="PackedScene" id=2]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Scripts/Level/Area.gd" type="Script" id=6]
 [ext_resource path="res://Prefabs/UserInterface/ResultsScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/GameManager/GameManager.gd" type="Script" id=8]
-[ext_resource path="res://Prefabs/Particles/HomingChip.tscn" type="PackedScene" id=9]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -22,70 +21,68 @@ _data = {
 
 [sub_resource type="BoxShape" id=5]
 
-[node name="Main" type="Node"]
+[node name="Spatial" type="Spatial"]
+
+[node name="GameManager" type="Node" parent="." groups=["gamemanager"]]
 script = ExtResource( 8 )
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="Label3D" type="Label3D" parent="GameManager"]
 transform = Transform( 0.0325796, 0, 0.999469, 0, 7.67456, 0, -7.67049, 0, 0.250034, -35.9639, 14.9343, 0 )
 text = "wefawefwefe"
 
-[node name="Ground" type="StaticBody" parent="."]
+[node name="Ground" type="StaticBody" parent="GameManager"]
 transform = Transform( 4.48124, 0, 0, 0, 1, 0, 0, 0, 1, -132.613, 0, 0 )
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape" type="CollisionShape" parent="Ground"]
+[node name="CollisionShape" type="CollisionShape" parent="GameManager/Ground"]
 transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 20, 0, -1, 0 )
 shape = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Ground"]
+[node name="MeshInstance" type="MeshInstance" parent="GameManager/Ground"]
 transform = Transform( 40, 0, 0, 0, 1, 0, 0, 0, 20, 0, -1, 0 )
 mesh = SubResource( 2 )
 
-[node name="Mob" parent="." instance=ExtResource( 2 )]
+[node name="Mob" parent="GameManager" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4865, 10.4339, -9.17629 )
 
-[node name="Mob2" parent="." instance=ExtResource( 2 )]
+[node name="Mob2" parent="GameManager" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -52.4865, 10.4339, 7.82371 )
 
-[node name="Mob3" parent="." instance=ExtResource( 2 )]
+[node name="Mob3" parent="GameManager" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4865, 29.4339, -3.17629 )
 
-[node name="Mob4" parent="." instance=ExtResource( 2 )]
+[node name="Mob4" parent="GameManager" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -97.4865, 10.4339, -9.17629 )
 
-[node name="Mob5" parent="." instance=ExtResource( 2 )]
+[node name="Mob5" parent="GameManager" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -100.486, 10.4339, 3.82371 )
 
-[node name="Path" type="Path" parent="."]
+[node name="Path" type="Path" parent="GameManager"]
 curve = SubResource( 4 )
 
-[node name="PathFollow" type="PathFollow" parent="Path"]
+[node name="PathFollow" type="PathFollow" parent="GameManager/Path"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18219, 0, -0.0568438 )
 script = ExtResource( 4 )
 
-[node name="Player" parent="Path/PathFollow" instance=ExtResource( 1 )]
-unique_name_in_owner = true
+[node name="Player" parent="GameManager/Path/PathFollow" instance=ExtResource( 1 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.40919, 0 )
 crosshair_scene = ExtResource( 3 )
 secondary_crosshair_scene = ExtResource( 5 )
 
-[node name="FinishArea" type="Area" parent="."]
+[node name="FinishArea" type="Area" parent="GameManager"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -66, 0, 0 )
 collision_layer = 16
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="FinishArea"]
+[node name="CollisionShape" type="CollisionShape" parent="GameManager/FinishArea"]
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 11, 0 )
 shape = SubResource( 5 )
 
-[node name="ResultsScreen" parent="FinishArea" instance=ExtResource( 7 )]
+[node name="ResultsScreen" parent="GameManager/FinishArea" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1.81566, 0, 0, 0, 1.81566, 0, 17, -5 )
 
-[node name="HomingChip" parent="." instance=ExtResource( 9 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -55, 3, -19 )
-
-[connection signal="body_entered" from="FinishArea" to="." method="_on_FinishArea_body_entered"]
-[connection signal="body_entered" from="FinishArea" to="Path/PathFollow" method="_on_FinishArea_body_entered"]
-[connection signal="body_entered" from="FinishArea" to="Path/PathFollow/Player" method="_on_FinishArea_body_entered"]
-[connection signal="body_entered" from="FinishArea" to="FinishArea" method="_on_FinishArea_body_entered"]
+[connection signal="body_entered" from="GameManager/FinishArea" to="GameManager" method="_on_FinishArea_body_entered"]
+[connection signal="body_entered" from="GameManager/FinishArea" to="GameManager/Path/PathFollow" method="_on_FinishArea_body_entered"]
+[connection signal="body_entered" from="GameManager/FinishArea" to="GameManager/Path/PathFollow/Player" method="_on_FinishArea_body_entered"]
+[connection signal="body_entered" from="GameManager/FinishArea" to="GameManager/FinishArea" method="_on_FinishArea_body_entered"]

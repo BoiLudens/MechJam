@@ -1,15 +1,14 @@
 extends Area
 
-
 export var speed = 30
 export var rotation_speed = 10
+export(PackedScene) var explosion_fx
 
 var velocity = Vector3()
 var rot = Vector3()
 var target
 var direction
 var rotateAmount
-export(PackedScene) var explosion_fx
 
 func _ready():
 	set_as_toplevel(true)
@@ -37,7 +36,7 @@ func _on_Lifetime_timeout():
 
 
 func _on_HomingChip_body_entered(body:Node):
-	printerr(body.name)
+	
 	if body.is_in_group("players"):
-		printerr("AERWAWR")
+		get_tree().call_group("gamemanager", "chips_collected_increment")
 		queue_free()

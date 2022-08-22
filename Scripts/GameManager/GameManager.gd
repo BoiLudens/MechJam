@@ -8,18 +8,15 @@ onready var player = $Path/PathFollow/Player
 onready var results = $FinishArea/ResultsScreen
 onready var label = $Label3D
 
-
 func _ready():
 	label.text = "start"
-	
-	var mobs = get_tree().get_nodes_in_group("mobs")
-	for mob in mobs:
-		mob.connect("enemy_hit", self, "_on_Mob_enemy_hit")
 
-func _on_Mob_enemy_hit():
+func enemies_hit_increment():
 	enemies_hit += 1
-	label.text = "hit"
 
+func chips_collected_increment():
+	chips_collected += 1
 
 func _on_FinishArea_body_entered(body):
-	results.set_all_labels(enemies_hit, 0, 0)
+	results.set_all_labels(enemies_hit, chips_collected, robo_bois_saved)
+	

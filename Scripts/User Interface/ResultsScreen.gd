@@ -11,4 +11,6 @@ func _ready():
 	pass # Replace with function body.
 
 func set_all_labels(enemy_count, chips_count, robo_bois_count):
-	enemies_label.text = 'ENEMIES ROUTED: ' + str(enemy_count)
+	enemies_label.text = "ENEMIES ROUTED: " + str(enemy_count)
+	chips_label.text = "CHIPS COLLECTED: " + str(chips_count)
+	robo_bois_label.text = "ROBO BOIS FOUND: " + str(robo_bois_count)
