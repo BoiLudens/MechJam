@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="MechJam"
+config/name="Scrap Boulevard"
 run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://icon.png"
 

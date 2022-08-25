@@ -668,21 +668,21 @@ bones/30/enabled = true
 bones/30/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( -3.8314e-08, -1, -4.47035e-07, 8.83617e-08, 2.68221e-07, -1, 1, -7.3253e-08, 7.62436e-08, -0.711532, 1.6234, -2.28919 )
+transform = Transform( -3.8314e-08, -1, -4.47035e-07, 8.83617e-08, 2.68221e-07, -1, 1, -7.3253e-08, 7.62436e-08, -0.711532, 1.99529, -2.28919 )
 bone_name = "Arm.R"
 
 [node name="Bullet SpawnL" type="Spatial" parent="Armature/Skeleton/BoneAttachment"]
 transform = Transform( -1, 9.97519e-09, 7.02609e-08, -7.02609e-08, 3.57628e-07, -1, -9.97521e-09, -1, -3.57628e-07, 0.00363197, 2.15441, 0.0319163 )
 
 [node name="BoneAttachment2" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( -5.13014e-08, -1, -2.68221e-07, -2.25878e-07, 1.49012e-07, -1, 1, -1.36479e-08, -2.2178e-07, -0.711534, 1.6234, 2.28919 )
+transform = Transform( -5.13014e-08, -1, -2.68221e-07, -2.25878e-07, 1.49012e-07, -1, 1, -1.36479e-08, -2.2178e-07, -0.711534, 1.99528, 2.28919 )
 bone_name = "Arm.L"
 
 [node name="Bullet SpawnR" type="Spatial" parent="Armature/Skeleton/BoneAttachment2"]
 transform = Transform( -1, -1.22407e-07, -5.9637e-08, 5.96369e-08, 1.78814e-07, -1, 1.22407e-07, -1, -1.19209e-07, 0.0137498, 2.15441, 0.0319163 )
 
 [node name="BoneAttachment3" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( 1.48739e-07, 0.999897, -0.0143612, 1.78802e-07, -0.014361, -0.999897, -1, 1.46157e-07, -1.80919e-07, 1.59416, 2.01223, 7.06467e-09 )
+transform = Transform( 1.48739e-07, 0.999897, -0.0143612, 1.78802e-07, -0.014361, -0.999897, -1, 1.46157e-07, -1.80919e-07, 1.59416, 2.38412, -4.75649e-09 )
 bone_name = "Secondary"
 
 [node name="Bullet SpawnS" type="Spatial" parent="Armature/Skeleton/BoneAttachment3"]
