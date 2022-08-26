@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Prefabs/Agents/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Prefabs/Agents/Mob.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Prefabs/UserInterface/Crosshair.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/Level/MechFollow.gd" type="Script" id=4]
 [ext_resource path="res://Prefabs/UserInterface/Secondary-Crosshair.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/Level/Area.gd" type="Script" id=6]
 [ext_resource path="res://Prefabs/UserInterface/ResultsScreen.tscn" type="PackedScene" id=7]
@@ -103,7 +102,7 @@ curve = SubResource( 8 )
 
 [node name="PathFollow" type="PathFollow" parent="PathManager/Route2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -119.292, -0.170227, 0.845459 )
-script = ExtResource( 4 )
+script = ExtResource( 10 )
 
 [node name="Route" type="Path" parent="PathManager"]
 curve = SubResource( 7 )
@@ -116,7 +115,7 @@ script = ExtResource( 10 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -158.265, 0, 0 )
 
 [connection signal="body_entered" from="FinishArea" to="GameManager" method="_on_FinishArea_body_entered"]
+[connection signal="body_entered" from="FinishArea" to="FinishArea" method="_on_FinishArea_body_entered"]
 [connection signal="body_entered" from="FinishArea" to="PathManager/StartPath/PlayerPathFollow" method="_on_FinishArea_body_entered"]
 [connection signal="body_entered" from="FinishArea" to="PathManager/StartPath/PlayerPathFollow/Player" method="_on_FinishArea_body_entered"]
-[connection signal="body_entered" from="FinishArea" to="FinishArea" method="_on_FinishArea_body_entered"]
 [connection signal="route_ended" from="PathManager/StartPath/PlayerPathFollow" to="PathManager" method="_on_PlayerPathFollow_route_ended"]

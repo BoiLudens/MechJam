@@ -8,6 +8,7 @@ var cursor_default = load("res://Textures/cursor2.png")
 var cursor_hit = load("res://Textures/cursor.png")
 var cursor_target = load("res://Textures/cursor3.png")
 
+var gun_sound_effect = load("res://Sounds/Guns/BIG CHAIN GUN - Shoot End Simplified Version - Heavy Artillery Automatic Weapon    [002594].mp3")
 
 onready var camera = $ClippedCamera
 onready var animator = $AnimationTree
@@ -69,18 +70,24 @@ func check_for_secondary_crosshair():
 
 func bullet_spawn_location(spawn_location, target):
 	var bullet = bullet_scene.instance()
-	# bullet_left_spawn.add_child(bullet)
 	get_parent().add_child(bullet)
-	# bullet.transform = bullet_left_spawn.transform
 	bullet.instantiate(spawn_location.global_transform, target)
+	var sound_effect = AudioStreamPlayer.new()
+	add_child(sound_effect)
+	sound_effect.stream = gun_sound_effect;
+	sound_effect.play()
 	left = not left
 	bullet_can_spawn = false
 
+	yield(sound_effect, "finished")
+	remove_child(sound_effect)
+	print("removed sound effect player")
+
 func secondary_spawn_location(spawn_location, target):
 	var bullet = bullet_scene.instance()
-	# secondary_spawn.add_child(bullet)
 	get_parent().add_child(bullet)
 	bullet.instantiate(spawn_location.global_transform, target)
+
 
 func _on_Bullet_Timer_timeout():
 	bullet_can_spawn = true
