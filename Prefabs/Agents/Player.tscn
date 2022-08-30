@@ -3,49 +3,6 @@
 [ext_resource path="res://Prefabs/Particles/Bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Agents/Player.gd" type="Script" id=2]
 
-[sub_resource type="AnimationNodeAnimation" id=74]
-animation = "Secondary_Idle"
-
-[sub_resource type="AnimationNodeBlend2" id=58]
-filter_enabled = true
-filters = [ "Armature/Skeleton:Foot.L", "Armature/Skeleton:Foot.R", "Armature/Skeleton:Hip", "Armature/Skeleton:Hip.L", "Armature/Skeleton:Hip.R", "Armature/Skeleton:LegIK.L", "Armature/Skeleton:LegIK.R", "Armature/Skeleton:LowerLeg.L", "Armature/Skeleton:LowerLeg.R", "Armature/Skeleton:MiddleLeg.L", "Armature/Skeleton:MiddleLeg.R" ]
-
-[sub_resource type="AnimationNodeAnimation" id=55]
-animation = "Move_Idle"
-
-[sub_resource type="AnimationNodeAnimation" id=56]
-animation = "Move_Walk"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id=57]
-blend_point_0/node = SubResource( 55 )
-blend_point_0/pos = -1.0
-blend_point_1/node = SubResource( 56 )
-blend_point_1/pos = 1.0
-
-[sub_resource type="AnimationNodeOneShot" id=59]
-filter_enabled = true
-filters = [ "Armature/Skeleton:Secondary" ]
-
-[sub_resource type="AnimationNodeAnimation" id=41]
-animation = "Secondary_Fire"
-
-[sub_resource type="AnimationNodeBlendTree" id=28]
-graph_offset = Vector2( -263.078, 48.8995 )
-nodes/Animation/node = SubResource( 74 )
-nodes/Animation/position = Vector2( -46.6192, 51.8096 )
-nodes/Blend2/node = SubResource( 58 )
-nodes/Blend2/position = Vector2( 360, 180 )
-nodes/BlendSpace1D/node = SubResource( 57 )
-nodes/BlendSpace1D/position = Vector2( 147.36, 318.4 )
-nodes/OneShot/node = SubResource( 59 )
-nodes/OneShot/position = Vector2( 160, 100 )
-"nodes/Secondary Aim/node" = SubResource( 41 )
-"nodes/Secondary Aim/position" = Vector2( -49, 176 )
-nodes/output/position = Vector2( 532.8, 150 )
-node_connections = [ "Blend2", 0, "OneShot", "Blend2", 1, "BlendSpace1D", "OneShot", 0, "Animation", "OneShot", 1, "Secondary Aim", "output", 0, "Blend2" ]
-
-[sub_resource type="BoxShape" id=13]
-
 [sub_resource type="ArrayMesh" id=75]
 resource_name = "Mech_Cylinder009"
 surfaces/0 = {
@@ -258,6 +215,49 @@ surfaces/0 = {
 "skeleton_aabb": [ AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( 0, 0, 0, -1, -1, -1 ), AABB( -1.07421, 4.70389, -2.12914, 2.16026, 2.6786, 4.00698 ) ],
 "vertex_count": 688
 }
+
+[sub_resource type="BoxShape" id=13]
+
+[sub_resource type="AnimationNodeAnimation" id=74]
+animation = "Secondary_Idle"
+
+[sub_resource type="AnimationNodeBlend2" id=58]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Foot.L", "Armature/Skeleton:Foot.R", "Armature/Skeleton:Hip", "Armature/Skeleton:Hip.L", "Armature/Skeleton:Hip.R", "Armature/Skeleton:LegIK.L", "Armature/Skeleton:LegIK.R", "Armature/Skeleton:LowerLeg.L", "Armature/Skeleton:LowerLeg.R", "Armature/Skeleton:MiddleLeg.L", "Armature/Skeleton:MiddleLeg.R" ]
+
+[sub_resource type="AnimationNodeAnimation" id=55]
+animation = "Move_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=56]
+animation = "Move_Walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=57]
+blend_point_0/node = SubResource( 55 )
+blend_point_0/pos = -1.0
+blend_point_1/node = SubResource( 56 )
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeOneShot" id=59]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Secondary" ]
+
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "Secondary_Fire"
+
+[sub_resource type="AnimationNodeBlendTree" id=28]
+graph_offset = Vector2( -263.078, 48.8995 )
+nodes/Animation/node = SubResource( 74 )
+nodes/Animation/position = Vector2( -46.6192, 51.8096 )
+nodes/Blend2/node = SubResource( 58 )
+nodes/Blend2/position = Vector2( 360, 180 )
+nodes/BlendSpace1D/node = SubResource( 57 )
+nodes/BlendSpace1D/position = Vector2( 147.36, 318.4 )
+nodes/OneShot/node = SubResource( 59 )
+nodes/OneShot/position = Vector2( 160, 100 )
+"nodes/Secondary Aim/node" = SubResource( 41 )
+"nodes/Secondary Aim/position" = Vector2( -49, 176 )
+nodes/output/position = Vector2( 532.8, 150 )
+node_connections = [ "Blend2", 0, "OneShot", "Blend2", 1, "BlendSpace1D", "OneShot", 0, "Animation", "OneShot", 1, "Secondary Aim", "output", 0, "Blend2" ]
 
 [sub_resource type="Animation" id=84]
 resource_name = "Move_Idle"
@@ -482,31 +482,6 @@ collision_mask = 22
 script = ExtResource( 2 )
 bullet_scene = ExtResource( 1 )
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 28 )
-anim_player = NodePath("../AnimationPlayer")
-active = true
-root_motion_track = NodePath("Armature/Skeleton:Root")
-parameters/Blend2/blend_amount = 1.0
-parameters/BlendSpace1D/blend_position = 1.27745
-parameters/OneShot/active = false
-
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 5.52235, 0, 0, 0, 4.83207, 0, 0, 0, 5.52235, 0, 5, 0 )
-shape = SubResource( 13 )
-
-[node name="BulletTimer" type="Timer" parent="."]
-wait_time = 0.3
-autostart = true
-
-[node name="SecondaryTimer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
-[node name="ClippedCamera" type="ClippedCamera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.44925, 9.266, 8.59284 )
-far = 200.0
-
 [node name="Armature" type="Spatial" parent="."]
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, 0, 5, 0 )
 
@@ -550,7 +525,7 @@ bones/7/name = "Arm.R"
 bones/7/parent = 6
 bones/7/rest = Transform( -1.19209e-07, -1, -3.57628e-07, -1.19209e-07, -3.57628e-07, 1, -1, 1.19209e-07, -1.19209e-07, 9.42616e-08, 0.703199, 2.28525e-08 )
 bones/7/enabled = true
-bones/7/bound_children = [  ]
+bones/7/bound_children = [ NodePath("BoneAttachment") ]
 bones/8/name = "ArmJoint.L"
 bones/8/parent = 5
 bones/8/rest = Transform( -7.15256e-07, -3.8743e-07, -1, 0.73881, -0.673914, -2.38419e-07, -0.673914, -0.73881, 6.55651e-07, -2.28919, 1.22357, -1.01396 )
@@ -560,12 +535,12 @@ bones/9/name = "Arm.L"
 bones/9/parent = 8
 bones/9/rest = Transform( 2.38419e-07, 1, 1.78814e-07, 1.78814e-07, -2.38419e-07, 1, 1, -2.98023e-07, -2.38419e-07, 1.01714e-07, 0.703199, 1.58983e-07 )
 bones/9/enabled = true
-bones/9/bound_children = [  ]
+bones/9/bound_children = [ NodePath("BoneAttachment2") ]
 bones/10/name = "Secondary"
 bones/10/parent = 4
 bones/10/rest = Transform( -1, -3.17832e-08, -1.18753e-07, 1.19197e-07, -0.0143611, -0.999897, 3.00745e-08, -0.999897, 0.0143611, -2.27878e-08, 1.01592, -0.718387 )
 bones/10/enabled = true
-bones/10/bound_children = [  ]
+bones/10/bound_children = [ NodePath("BoneAttachment3") ]
 bones/11/name = "Hip.R"
 bones/11/parent = 3
 bones/11/rest = Transform( -1, 1.70857e-07, -2.18557e-07, -2.18557e-07, 0, 1, 1.70857e-07, 1, 0, 5.64605e-08, -4.76837e-07, 0.331001 )
@@ -668,21 +643,21 @@ bones/30/enabled = true
 bones/30/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( -3.8314e-08, -1, -4.47035e-07, 8.83617e-08, 2.68221e-07, -1, 1, -7.3253e-08, 7.62436e-08, -0.711532, 1.64701, -2.28919 )
+transform = Transform( -3.8314e-08, -1, -4.47035e-07, 8.83617e-08, 2.68221e-07, -1, 1, -7.3253e-08, 7.62436e-08, -0.711532, 1.99909, -2.28919 )
 bone_name = "Arm.R"
 
 [node name="Bullet SpawnL" type="Spatial" parent="Armature/Skeleton/BoneAttachment"]
 transform = Transform( -1, 9.97519e-09, 7.02609e-08, -7.02609e-08, 3.57628e-07, -1, -9.97521e-09, -1, -3.57628e-07, 0.00363197, 2.15441, 0.0319163 )
 
 [node name="BoneAttachment2" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( -5.13014e-08, -1, -2.68221e-07, -2.25878e-07, 1.49012e-07, -1, 1, -1.36479e-08, -2.2178e-07, -0.711534, 1.64701, 2.28919 )
+transform = Transform( -5.13014e-08, -1, -2.68221e-07, -2.25878e-07, 1.49012e-07, -1, 1, -1.36479e-08, -2.2178e-07, -0.711534, 1.99909, 2.28919 )
 bone_name = "Arm.L"
 
 [node name="Bullet SpawnR" type="Spatial" parent="Armature/Skeleton/BoneAttachment2"]
 transform = Transform( -1, -1.22407e-07, -5.9637e-08, 5.96369e-08, 1.78814e-07, -1, 1.22407e-07, -1, -1.19209e-07, 0.0137498, 2.15441, 0.0319163 )
 
 [node name="BoneAttachment3" type="BoneAttachment" parent="Armature/Skeleton"]
-transform = Transform( 1.48739e-07, 0.999897, -0.0143612, 1.78802e-07, -0.014361, -0.999897, -1, 1.46157e-07, -1.80919e-07, 1.59416, 2.03584, 6.31439e-09 )
+transform = Transform( 1.48739e-07, 0.999897, -0.0143612, 1.78802e-07, -0.014361, -0.999897, -1, 1.46157e-07, -1.80919e-07, 1.59416, 2.38792, -4.87734e-09 )
 bone_name = "Secondary"
 
 [node name="Bullet SpawnS" type="Spatial" parent="Armature/Skeleton/BoneAttachment3"]
@@ -720,6 +695,19 @@ skin = SubResource( 76 )
 mesh = SubResource( 83 )
 skin = SubResource( 76 )
 
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 5.52235, 0, 0, 0, 4.83207, 0, 0, 0, 5.52235, 0, 5, 0 )
+shape = SubResource( 13 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 28 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+root_motion_track = NodePath("Armature/Skeleton:Root")
+parameters/Blend2/blend_amount = 1.0
+parameters/BlendSpace1D/blend_position = 1.27745
+parameters/OneShot/active = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Move_Idle = SubResource( 84 )
 anims/Move_Walk = SubResource( 85 )
@@ -727,7 +715,13 @@ anims/Move_Walk_Start = SubResource( 86 )
 anims/Secondary_Fire = SubResource( 87 )
 anims/Secondary_Idle = SubResource( 88 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BulletTimer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="SecondaryTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
 
 [connection signal="timeout" from="BulletTimer" to="." method="_on_Bullet_Timer_timeout"]
 [connection signal="timeout" from="SecondaryTimer" to="." method="_on_SecondaryTimer_timeout"]

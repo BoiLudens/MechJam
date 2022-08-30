@@ -4,13 +4,15 @@ export (PackedScene) var bullet_scene
 export (PackedScene) var crosshair_scene
 export (PackedScene) var secondary_crosshair_scene
 
+export var ray_distance = 5000
+
 var cursor_default = load("res://Textures/cursor2.png")
 var cursor_hit = load("res://Textures/cursor.png")
 var cursor_target = load("res://Textures/cursor3.png")
 
 var gun_sound_effect = load("res://Sounds/Guns/BIG CHAIN GUN - Shoot End Simplified Version - Heavy Artillery Automatic Weapon    [002594].mp3")
 
-onready var camera = $ClippedCamera
+onready var camera = get_node("%MainCamera")
 onready var animator = $AnimationTree
 
 onready var bullet_left_spawn = $"Armature/Skeleton/BoneAttachment/Bullet SpawnL"
@@ -25,6 +27,14 @@ var bullet_can_spawn = true
 var secondary_can_spawn = true
 
 func _process(delta):
+	weapons_systems()
+	
+
+func weapons_systems():
+	primary_weapon_system()
+	secondary_weapon_system()
+
+func primary_weapon_system():
 	var intersection = check_ray_hit()
 	if not intersection.empty():
 		var target_position = intersection.position
@@ -39,6 +49,8 @@ func _process(delta):
 			bullet_spawn_location(spawn_location, target_position)
 	else:
 		Input.set_custom_mouse_cursor(cursor_default)
+
+func secondary_weapon_system():
 	if Input.is_action_pressed("secondary"):
 		check_for_secondary_crosshair()
 		if Input.is_action_pressed("fire") and secondary_can_spawn:
@@ -46,13 +58,13 @@ func _process(delta):
 			for target in current_secondary_crosshairs:
 				secondary_spawn_location(secondary_spawn, target.get_parent().transform.origin)
 			secondary_can_spawn = false
-		
+
 func check_ray_hit():
 	var rid = $".".get_rid()
 	var space_state = get_world().direct_space_state
 	var mouse_position = get_viewport().get_mouse_position()
 	rayOrigin = camera.project_ray_origin(mouse_position)
-	rayEnd = rayOrigin + camera.project_ray_normal(mouse_position) * 2000
+	rayEnd = rayOrigin + camera.project_ray_normal(mouse_position) * ray_distance
 	return space_state.intersect_ray(rayOrigin, rayEnd, [rid], 3)
 
 func check_for_crosshair(target):

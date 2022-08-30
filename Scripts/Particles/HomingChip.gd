@@ -36,7 +36,7 @@ func _on_Lifetime_timeout():
 
 
 func _on_HomingChip_body_entered(body:Node):
-	
 	if body.is_in_group("players"):
 		get_tree().call_group("gamemanager", "chips_collected_increment")
+		print("COLLECTED")
 		queue_free()

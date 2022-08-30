@@ -260,32 +260,32 @@ bones/7/name = "Head"
 bones/7/parent = 6
 bones/7/rest = Transform( -1, 2.34841e-08, 3.99779e-07, 3.11187e-07, 0.673914, 0.73881, -2.52067e-07, 0.73881, -0.673914, -5.61435e-14, 1.25483, 2.20182e-08 )
 bones/7/enabled = true
-bones/7/bound_children = [ NodePath("BoneAttachment5"), NodePath("BoneAttachment6") ]
+bones/7/bound_children = [  ]
 bones/8/name = "ArmJoint.R"
 bones/8/parent = 7
 bones/8/rest = Transform( 3.57628e-07, -4.47035e-07, 1, -0.738809, -0.673914, -8.9407e-08, 0.673914, -0.73881, -3.57628e-07, 2.28919, 1.22357, -1.01396 )
 bones/8/enabled = true
-bones/8/bound_children = [ NodePath("BoneAttachment2") ]
+bones/8/bound_children = [  ]
 bones/9/name = "Arm.R"
 bones/9/parent = 8
 bones/9/rest = Transform( 5.96046e-08, -1, -5.06639e-07, 2.98023e-08, -4.76837e-07, 1, -1, -2.98023e-08, 5.96046e-08, -1.01111e-09, 0.703199, 1.77963e-07 )
 bones/9/enabled = true
-bones/9/bound_children = [ NodePath("BoneAttachment") ]
+bones/9/bound_children = [  ]
 bones/10/name = "ArmJoint.L"
 bones/10/parent = 7
 bones/10/rest = Transform( -7.15256e-07, -3.8743e-07, -1, 0.73881, -0.673914, -2.38419e-07, -0.673914, -0.73881, 6.55651e-07, -2.28919, 1.22357, -1.01396 )
 bones/10/enabled = true
-bones/10/bound_children = [ NodePath("BoneAttachment4") ]
+bones/10/bound_children = [  ]
 bones/11/name = "Arm.L"
 bones/11/parent = 10
 bones/11/rest = Transform( 2.38419e-07, 1, 1.78814e-07, 1.78814e-07, -2.38419e-07, 1, 1, -2.98023e-07, -2.38419e-07, 3.16105e-08, 0.703199, 3.93263e-08 )
 bones/11/enabled = true
-bones/11/bound_children = [ NodePath("BoneAttachment3") ]
+bones/11/bound_children = [  ]
 bones/12/name = "Battery"
 bones/12/parent = 6
 bones/12/rest = Transform( -1, -3.17832e-08, -1.18753e-07, 1.19197e-07, -0.0143611, -0.999897, 3.00745e-08, -0.999897, 0.0143611, -2.2835e-08, 1.01592, -0.718386 )
 bones/12/enabled = true
-bones/12/bound_children = [ NodePath("BoneAttachment7") ]
+bones/12/bound_children = [  ]
 bones/13/name = "Hip.R"
 bones/13/parent = 5
 bones/13/rest = Transform( -1, 1.70857e-07, -2.18557e-07, -2.18557e-07, 0, 1, 1.70857e-07, 1, 0, 1.16159e-07, -5.96047e-07, 0.331001 )
@@ -344,7 +344,6 @@ bone_name = "Arm.R"
 [node name="Right Gun" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment"]
 transform = Transform( 3.57628e-07, 1.78814e-07, 1, -1, 2.38419e-07, 4.17233e-07, -2.98023e-07, -1, 1.19209e-07, 0.0331595, 1.9428, 0.667247 )
 mesh = SubResource( 1 )
-material/0 = null
 
 [node name="Bullet Spawn" type="Spatial" parent="Control/Armature/Skeleton/BoneAttachment/Right Gun"]
 
@@ -355,7 +354,6 @@ bone_name = "ArmJoint.R"
 [node name="Right Arm Connector" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment2"]
 transform = Transform( 1, -6.08716e-08, 3.95117e-07, -6.08716e-08, -1, 3.92616e-08, 3.95117e-07, -3.92616e-08, -1, -0.0289673, 1.2476, -0.0295033 )
 mesh = SubResource( 2 )
-material/0 = null
 
 [node name="BoneAttachment3" type="BoneAttachment" parent="Control/Armature/Skeleton"]
 transform = Transform( -5.13014e-08, -1, -2.68221e-07, -2.25878e-07, 1.49012e-07, -1, 1, -1.3648e-08, -2.2178e-07, -0.711534, 0.929517, 2.28919 )
@@ -364,7 +362,6 @@ bone_name = "Arm.L"
 [node name="Left Gun" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment3"]
 transform = Transform( 1.78814e-07, 0, 1, -1, 5.96046e-08, 2.08616e-07, -8.9407e-08, -1, 0, -0.0130374, 1.98318, 0.676164 )
 mesh = SubResource( 3 )
-material/0 = null
 
 [node name="Bullet Spawn" type="Spatial" parent="Control/Armature/Skeleton/BoneAttachment3/Left Gun"]
 
@@ -375,7 +372,6 @@ bone_name = "ArmJoint.L"
 [node name="Left Arm Connector" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment4"]
 transform = Transform( -1, 1.49012e-08, 4.28894e-07, -1.49012e-08, -1, -7.42887e-09, 4.28894e-07, -7.42887e-09, 1, 0.0289681, 1.24761, -0.0295043 )
 mesh = SubResource( 4 )
-material/0 = null
 
 [node name="BoneAttachment5" type="BoneAttachment" parent="Control/Armature/Skeleton"]
 transform = Transform( 4.30881e-07, -0.73881, 0.673914, 3.70792e-07, 0.673914, 0.73881, -1, -6.84577e-08, 5.64321e-07, 0.875774, 1.55726, -6.24371e-08 )
@@ -384,7 +380,6 @@ bone_name = "Head"
 [node name="Head" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment5"]
 transform = Transform( 1.78814e-07, 5.06639e-07, -1, -0.73881, 0.673914, 1.78814e-07, 0.673914, 0.73881, 4.76837e-07, -6.09085e-07, 2.81817, -1.56192 )
 mesh = SubResource( 5 )
-material/0 = null
 
 [node name="BoneAttachment6" type="BoneAttachment" parent="Control/Armature/Skeleton"]
 transform = Transform( 4.30881e-07, -0.73881, 0.673914, 3.70792e-07, 0.673914, 0.73881, -1, -6.84577e-08, 5.64321e-07, 0.875774, 1.55726, -6.24371e-08 )
@@ -393,7 +388,6 @@ bone_name = "Head"
 [node name="Torso" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment6"]
 transform = Transform( 1.78814e-07, 5.06639e-07, -1, -0.73881, 0.673914, 1.78814e-07, 0.673914, 0.73881, 4.76837e-07, 1.76951e-08, 0.23565, -0.144543 )
 mesh = SubResource( 6 )
-material/0 = null
 
 [node name="BoneAttachment7" type="BoneAttachment" parent="Control/Armature/Skeleton"]
 transform = Transform( 1.48739e-07, 0.999897, -0.0143612, 1.78802e-07, -0.014361, -0.999897, -1, 1.46157e-07, -1.80919e-07, 1.59416, 1.31835, 2.89458e-08 )
@@ -402,14 +396,12 @@ bone_name = "Battery"
 [node name="Battery" type="MeshInstance" parent="Control/Armature/Skeleton/BoneAttachment7"]
 transform = Transform( -1.19209e-07, 1.78814e-07, -1, 0.999897, -0.0143611, -5.96044e-08, -0.0143611, -0.999897, -2.38419e-07, -3.72529e-09, 1.68338, -1.27012 )
 mesh = SubResource( 7 )
-material/0 = null
 
 [node name="Bullet Spawn" type="Spatial" parent="Control/Armature/Skeleton/BoneAttachment7/Battery"]
 
 [node name="Lower Body" type="MeshInstance" parent="Control/Armature/Skeleton"]
 mesh = SubResource( 10 )
 skin = SubResource( 11 )
-material/0 = null
 
 [node name="ClippedCamera" type="ClippedCamera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431705, 10.9231, 16.0672 )
